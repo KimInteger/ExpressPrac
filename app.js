@@ -12,6 +12,15 @@ const PORT = process.env.PORT || 8080;
 
 const app = express();
 
+
+const fortunes = [
+  "Conquer your fears or they will conquer you",
+  "These are the nights will never die",
+  "My father told me",
+  "When I was just a child",
+  "My enenmy"
+];
+
 // 핸들바 뷰 엔진 설정
 app.engine('handlebars',handler({
   defalutLayout: 'main'
