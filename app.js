@@ -12,6 +12,18 @@ const PORT = process.env.PORT || 8080;
 
 const app = express();
 
+app.get('/',(req,res)=>{
+  res.type('text/plain');
+  res.send('hello Express');
+});
+
+app.get('/about',(req,res)=>{
+  res.type('text/plain');
+  res.send('You know? this is new Experience');
+});
+
+
+
 app.use((req,res)=>{
   res.type('text/plain');
   res.status(404);
