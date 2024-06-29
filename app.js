@@ -12,29 +12,28 @@ const PORT = process.env.PORT || 8080;
 
 const app = express();
 
-app.get('/',(req,res)=>{
-  res.type('text/plain');
-  res.send('hello Express');
-});
+// 핸들바 뷰 엔진 설정
+app.engine('handlebars',handler({
+  defalutLayout: 'main'
+}))
 
-app.get('/about',(req,res)=>{
-  res.type('text/plain');
-  res.send('You know? this is new Experience');
-});
+app.set('view engine', 'handlebars')
+
+app.get('/',(req,res)=>{res.render('home')});
+
+app.get('/about',(req,res)=>{res.render('about')});
 
 
 
 app.use((req,res)=>{
-  res.type('text/plain');
   res.status(404);
-  res.send('404 Not Found');
+  res.render('404');
 });
 
 app.use((err,req,res,next)=>{
   console.error(err.message);
-  res.type('text/plain');
   res.status(500);
-  res.send('500 Server error');
+  res.render('5001')
 });
 
 app.listen(PORT,()=>{
